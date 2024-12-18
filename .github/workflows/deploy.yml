@@ -1,0 +1,22 @@
+name: Deploy to Dokku
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Dokku deploy
+      uses: vitalyliber/dokku-github-action@v7.1
+      env:
+        PRIVATE_KEY: ${{ secrets.EXEMPLE_PRIVATE_KEY }}
+        HOST: ${{ secrets.HOST }}
+        PROJECT: client
+        BRANCH: main

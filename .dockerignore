@@ -1,0 +1,8 @@
+node_modules/
+generators/
+.editorconfig
+.eslintrc.json
+.prettierrc
+*.md
+*jest
+*github

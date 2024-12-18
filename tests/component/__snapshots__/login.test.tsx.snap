@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render the logo 1`] = `
+@media (max-width: 720px) {
+
+}
+
+@media (max-width: 720px) {
+
+}
+
+<img
+  alt="Logo"
+  data-nimg="1"
+  decoding="async"
+  height="40"
+  loading="lazy"
+  src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+  srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+  style="color: transparent;"
+  width="40"
+/>
+`;
+
+exports[`Login should render the subtitle 1`] = `
+.c0 {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  width: auto;
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFFFFF;
+  align-self: auto;
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+
+}
+
+@media (max-width: 720px) {
+
+}
+
+<p
+  class="c0"
+>
+  Made with 
+  <strong>
+    &lt; / &gt;
+  </strong>
+   and
+   
+  <strong>
+    ♥
+  </strong>
+   by my
+</p>
+`;
+
+exports[`Login should render the title 1`] = `
+.c0 {
+  text-align: center;
+  margin: 20px 0;
+  padding: 0px;
+  width: auto;
+  font-family: Outfit;
+  font-weight: 800;
+  font-size: 40px;
+  color: #FFFFFF;
+  align-self: auto;
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+
+}
+
+@media (max-width: 720px) {
+
+}
+
+<p
+  class="c0"
+  margin="20px 0"
+>
+  NextJS Boilerplate
+</p>
+`;

@@ -1,0 +1,30 @@
+name: ESLint, typecheck and build
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Installs all the packages
+      - name: Install dependencies and packages
+        run: yarn install
+
+      # Runs the lint script
+      - name: Run the lint Script
+        run: yarn lint
+
+      # Runs the typecheck script
+      - name: Run the typecheck Script
+        run: yarn typecheck
+
+      # Runs the build script
+      - name: Run the build Script
+        run: yarn build
