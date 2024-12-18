@@ -1,5 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { prisma } from 'lib/prisma';
+import { compare } from 'bcryptjs';
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -7,28 +9,41 @@ export const nextAuthOptions: NextAuthOptions = {
       name: 'Credentials',
       credentials: {
         username: { label: 'Username', type: 'text' },
-        password: { label: 'Password', type: 'password' }
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials, req) {
-        // usuario Mockado exemplo
-        const mockUser = {
-          id: '1',
-          name: 'mockuser',
-          email: 'mockuser@example.com',
-          username: credentials?.username
-        };
-
-        if (credentials?.username === 'mockuser' && credentials?.password === 'mockpassword') {
-          return mockUser;
+        if (!credentials?.username || !credentials?.password) {
+          return null;
         }
 
-        return null;
-      }
-    })
+        // Verifica se o usuário existe no banco de dados
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (!user) {
+          return null;
+        }
+
+        // Verifica se a senha está correta
+        const isValidPassword = await compare(credentials.password, user.password);
+
+        if (!isValidPassword) {
+          return null;
+        }
+
+        return {
+          id: String(user.id),
+          name: user.nome,
+          email: user.email,
+        };
+      },
+    }),
   ],
   pages: {
-    signIn: '/'
+    signIn: '/',
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -39,6 +54,6 @@ export const nextAuthOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.user = token.user as any;
       return session;
-    }
-  }
+    },
+  },
 };

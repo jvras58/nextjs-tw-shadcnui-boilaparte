@@ -1,26 +1,63 @@
-# Next.js 14.2.20 Boilerplate
+# Next.js Boilerplate com TailwindCSS
 
-## 📖 Sobre o Projeto
-O projeto consiste em uma aplicação template para projetos Next com nextAuth.
+## 🚀 Visão Geral
+Boilerplate construído com Next.js e TailwindCSS, incluindo autenticação, Docker e GitHub Actions e shadcn/ui.
 
-## 🚀 Tecnologias e Ferramentas
+## 📋 Funcionalidades
+- Autenticação integrada
+- Gerador automático de componentes e páginas
+- Docker pronto para uso
+- GitHub Actions configurado
+- Estrutura de testes preparada
+- TailwindCSS para estilização
 
-A aplicação foi desenvolvida em React usando o Next.js com shadcn/ui.
+## 🛠️ Páginas Disponíveis
+- `/` - Home (protegida por autenticação)
+- `/login` - Página de login
+- `/cadastro` - Página de cadastro de usuário
 
-## Stack do Projeto
+## 🚦 Começando
 
-Este projeto é uma aplicação web simples que utiliza Next.js, Um Framework para Desenvolvedores React que permite a criação de aplicativos web extremamente rápida para começar.
+### Pré-requisitos
+- Node.js 18+
 
-Essas e outras libs e tecnologias usadas neste projeto são:
-|  Lib      | Versão    |
-|-----------|-----------|
-| **Runtime**           |
-| React.js  | v20.03.x  |
-| **Devtime**           |
-| xxxx                         | vx.x.x   |
+### Instalação
+```bash
+# Clone o repositório
+git clone [url-do-repositorio]
 
+# Instale as dependências
+npm install
 
-### Organização do projeto
+# Configure as variáveis de ambiente
+cp .env.example .env.local
+```
+
+### Scripts Disponíveis
+```bash
+# Desenvolvimento
+npm run dev
+
+# Build
+npm run build
+
+# Gerar novo componente/página
+npm run generate
+
+# Executar testes
+npm run test
+```
+
+## 🐳 Docker
+```bash
+# Construir imagem
+docker build -t nextjs-boilerplate .
+
+# Executar container
+docker run -p 3000:3000 nextjs-boilerplate
+```
+
+## 📦 Estrutura do Projeto
 ```
 /
 ├─📁 .devcontainer          ->  Configurações do devcontainer
@@ -33,35 +70,5 @@ Essas e outras libs e tecnologias usadas neste projeto são:
 ├─📄 Makefile               ->  Automações para o ambiente
 ├─📄 package.json           ->  Definições para o projeto
 ├─📄 README.md
-
 ```
-
-## Antes de Iniciar o Projeto - Alguns Avisos
-
-1. O projeto já possui um Dockerfile e configurações para o workflow do GitHub. A estrutura de testes também está presente, embora não haja nenhum teste atualmente.
-2. Seguindo a estrutura básica do Next.js, foi adicionado um gerador de páginas e componentes. Utilize o comando `next run generate` para manter o padrão dos componentes.
-
-
-
-## Rodando o Projeto:
-
-1. Certifique-se de que você tem **node** e **yarn** (ou **npm**, se você usá-lo) instalado.
-2. Clone o repositório executando
-```bash
-git clone git@github.com:..........
-```
-3. Instale todas as dependências executando
-```bash
-yarn install
-# or
-npm install
-```
-4. Para executar o servidor de desenvolvimento, execute
-```bash
-yarn dev
-# or
-npm dev
-```
-5. Abrir [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
-
 
