@@ -16,7 +16,7 @@ import { Input } from 'components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
-import { cadastroFormSchema }  from 'actions/cadastro/schema';
+import { cadastroFormSchema }  from 'validations/CadastroSchema';
 import { saveCadastroForm } from 'actions/cadastro/save';
 import { useRouter } from 'next/navigation';
 

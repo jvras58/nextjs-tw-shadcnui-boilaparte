@@ -1,7 +1,7 @@
 "use server";
     
 import { prisma } from "lib/prisma";
-import { cadastroFormSchema } from "./schema";
+import { cadastroFormSchema } from "../../validations/CadastroSchema";
 import { z } from "zod";
 
 
