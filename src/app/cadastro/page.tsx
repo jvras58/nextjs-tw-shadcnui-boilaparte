@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { Button } from 'components/ui/button';
 import {
   Form,
@@ -34,7 +35,7 @@ export default function LandingPage() {
       try {
           const result = await saveCadastroForm(data);
           console.log('Cadastro realizado com sucesso:', result);
-          // Lógica adicional após o sucesso, como redirecionamento ou exibição de mensagem
+          redirect("/login");
       } catch (error) {
           console.error('Erro ao enviar o formulário:', error);
           // Lógica de tratamento de erro, como exibir uma mensagem ao usuário
@@ -42,22 +43,24 @@ export default function LandingPage() {
   };
 
   return (
-    <Card className="w-1/2">
-      <CardHeader>Cadastro</CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleForm)} className="space-y-8">
-            <div className="space-y-4">
+    <div className="min-h-screen bg-green-100 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md shadow-lg">
+        <CardHeader className="text-center">
+          <h1 className="text-2xl font-bold text-green-800">Cadastro</h1>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleForm)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="nome"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome:</FormLabel>
+                    <FormLabel className="text-green-700">Nome:</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nome do Usuario" {...field} />
+                      <Input placeholder="Nome do Usuário" {...field} className="border-green-300 focus:border-green-500" />
                     </FormControl>
-                    <FormDescription>Digite seu nome de usuário</FormDescription>
+                    <FormDescription className="text-green-600">Digite seu nome de usuário</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -67,11 +70,11 @@ export default function LandingPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email:</FormLabel>
+                    <FormLabel className="text-green-700">Email:</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="Email" {...field} />
+                      <Input type="email" placeholder="Email" {...field} className="border-green-300 focus:border-green-500" />
                     </FormControl>
-                    <FormDescription>Digite seu email</FormDescription>
+                    <FormDescription className="text-green-600">Digite seu email</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -81,20 +84,22 @@ export default function LandingPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Senha:</FormLabel>
+                    <FormLabel className="text-green-700">Senha:</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="Senha" {...field} />
+                      <Input type="password" placeholder="Senha" {...field} className="border-green-300 focus:border-green-500" />
                     </FormControl>
-                    <FormDescription>Digite uma senha segura</FormDescription>
+                    <FormDescription className="text-green-600">Digite uma senha segura</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-            </div>
-            <Button type="submit">Criar</Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+              <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white">
+                Criar Conta
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
