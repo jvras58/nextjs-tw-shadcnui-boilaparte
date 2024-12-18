@@ -3,6 +3,8 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import { Button } from 'components/ui/button'
+import { ThemeToggle } from 'components/theme-toggle'
 
 import { Logo } from '@/../assets';
 
@@ -14,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
+    <div className="flex flex-1 flex-col h-full justify-around items-center">
       <div>
         <Image src={Logo} alt="Logo" />
       </div>
@@ -25,6 +27,11 @@ export default function Home() {
           <strong>&hearts;</strong> by my
         </p>
       </div>
+      <ThemeToggle />
+      <Button size="sm" className="mt-4">
+          Button
+        </Button>
     </div>
+    
   );
 }
