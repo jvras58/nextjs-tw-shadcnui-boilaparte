@@ -8,13 +8,15 @@ export const nextAuthOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username', type: 'text' },
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials, req) {
-        if (!credentials?.username || !credentials?.password) {
+        console.log('Credenciais recebidas:', credentials);
+
+        if (!credentials?.email || !credentials?.password) {
+          console.log('Credenciais inválidas');
           return null;
         }
 
@@ -23,7 +25,10 @@ export const nextAuthOptions: NextAuthOptions = {
           where: { email: credentials.email },
         });
 
+        console.info('Usuário encontrado:', user);
+
         if (!user) {
+          console.info('Usuário não encontrado');
           return null;
         }
 
@@ -31,6 +36,7 @@ export const nextAuthOptions: NextAuthOptions = {
         const isValidPassword = await compare(credentials.password, user.password);
 
         if (!isValidPassword) {
+          console.info('Senha inválida');
           return null;
         }
 

@@ -9,14 +9,14 @@ import { Button } from 'components/ui/button';
 export interface LoginFormProps {}
 
 const LoginForm = ({}: LoginFormProps) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await signIn('credentials', {
       redirect: false,
-      username: username,
+      email: email,
       password: password,
     });
   };
@@ -24,13 +24,13 @@ const LoginForm = ({}: LoginFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
       <div className="grid gap-2">
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="email">Email</Label>
         <Input
-          id="username"
-          type="text"
-          placeholder="John Doe"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          id="email"
+          type="email"
+          placeholder="example@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
