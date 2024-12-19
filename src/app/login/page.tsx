@@ -30,7 +30,7 @@ export default function Login() {
           </div>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Digite o seu username abaixo para fazer login em sua conta.
+            Digite o suas Credenciais abaixo para fazer login em sua conta.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">

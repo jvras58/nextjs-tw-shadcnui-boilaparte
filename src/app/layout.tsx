@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-
 import NextAuthSessionProvider from 'providers/sessionProvider';
 import 'styles/globals.css';
 import { ThemeProvider } from 'components/theme-provider';
@@ -15,17 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>
+    <html lang="pt-BR">
+      <body className="min-h-screen bg-background font-sans antialiased">
         <NextAuthSessionProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-        {children}
-        </ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </NextAuthSessionProvider>
       </body>
     </html>

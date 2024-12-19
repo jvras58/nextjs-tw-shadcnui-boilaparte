@@ -11,18 +11,26 @@ export interface LoginFormProps {}
 const LoginForm = ({}: LoginFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await signIn('credentials', {
+    const result = await signIn('credentials', {
       redirect: false,
       email: email,
       password: password,
     });
+
+    if (result?.error) {
+      setError('Credenciais inválidas. Por favor, tente novamente.');
+    } else {
+      setError('');
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
+      {error && <div className="text-red-500">{error}</div>}
       <div className="grid gap-2">
         <Label htmlFor="email">Email</Label>
         <Input
