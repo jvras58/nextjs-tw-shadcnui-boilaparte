@@ -1,9 +1,9 @@
-'use client';
+
 
 import { Logo } from 'assets';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { getServerSession } from 'next-auth';
 import {
   Card,
   CardContent,
@@ -13,12 +13,12 @@ import {
 } from 'components/ui/card';
 import LoginForm from 'components/Form/loginForm';
 
-export default function Login() {
-  const session = useSession();
-
-  if (session.status === 'authenticated') {
+export default async function Login() {
+  const session = await getServerSession();
+  
+  if (!session) {
     redirect('/');
-  }
+    }
 
   return (
     <div className="flex flex-1 flex-col h-full justify-around items-center">
