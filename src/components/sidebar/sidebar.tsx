@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Home, Settings, ChevronUp, GalleryVerticalEnd } from 'lucide-react'
+import { Home, LayoutDashboard, Settings, ChevronUp, GalleryVerticalEnd } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import {
@@ -24,7 +24,8 @@ import {
 import { signOut, useSession } from 'next-auth/react'
 
 const navItems = [
-  { icon: Home, label: 'Home', href: '/dashboard' },
+  { icon: Home, label: 'Home', href: '/' },
+  { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
   { icon: Settings, label: 'Settings', href: '/settings' },
 ]
 
