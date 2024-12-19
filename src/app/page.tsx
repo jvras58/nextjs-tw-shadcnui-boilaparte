@@ -1,17 +1,15 @@
-'use client';
-
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import { Button } from 'components/ui/button'
 import { ThemeToggle } from 'components/theme-toggle'
+import { getServerSession } from 'next-auth';
 
 import { Logo } from '@/../assets';
+import { LogoutButton } from 'components/button-auth/LogoutButton';
 
-export default function Home() {
-  const session = useSession();
+export default async function Home() {
+  const session = await getServerSession();
 
-  if (session.status === 'unauthenticated') {
+  if (!session) {
     redirect('/login');
   }
 
@@ -28,9 +26,7 @@ export default function Home() {
         </p>
       </div>
       <ThemeToggle />
-      <Button size="sm" className="mt-4">
-          Button
-        </Button>
+      <LogoutButton />
     </div>
     
   );
